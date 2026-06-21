@@ -3,51 +3,62 @@ import os
 
 from utils.preprocess import clean_text
 
-# paths
+
+BASE_DIR = os.path.dirname(
+    os.path.abspath(__file__)
+)
+
 MODEL_PATH = os.path.join(
+    BASE_DIR,
+    "..",
     "models",
     "sentiment_model.pkl"
 )
 
 VECTORIZER_PATH = os.path.join(
+    BASE_DIR,
+    "..",
     "models",
     "vectorizer.pkl"
 )
 
-# load trained model
+
+# Load trained model
 with open(MODEL_PATH, "rb") as file:
     model = pickle.load(file)
 
-# load vectorizer
+
+# Load vectorizer
 with open(VECTORIZER_PATH, "rb") as file:
     vectorizer = pickle.load(file)
 
+
 def predict_sentiment(text):
 
-    # clean input text
+    # Clean input text
     cleaned_text = clean_text(text)
 
-    # convert text → vector
+    # Convert text to vector
     vector = vectorizer.transform(
         [cleaned_text]
     )
 
-    # prediction
+    # Prediction
     prediction = model.predict(
         vector
     )[0]
 
-    # probability
+    # Probability score
     probabilities = model.predict_proba(
         vector
     )[0]
 
-    # convert numpy float to normal float
+    # Confidence percentage
     confidence = float(
         max(probabilities) * 100
     )
 
-    # sentiment label
+    # Final sentiment
     sentiment = (
         "Positive"
         if prediction == 1
