@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Analytics Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static',
+          filename='css/style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <h1>Analytics Dashboard</h1>
+
+        <div class="stats-grid">
+
+            <div class="stat-box">
+                <h3>Total Reviews</h3>
+                <p>{{ total }}</p>
+            </div>
+
+            <div class="stat-box">
+                <h3>Positive Rate</h3>
+                <p class="green">
+                    {{ positive_percent }}%
+                </p>
+            </div>
+
+            <div class="stat-box">
+                <h3>Negative Rate</h3>
+                <p class="red">
+                    {{ negative_percent }}%
+                </p>
+            </div>
+
+        </div>
+
+        <div class="insight-box">
+
+            <h2>AI Insight</h2>
+
+            <p>{{ insight }}</p>
+
+        </div>
+
+        <div class="chart-section">
+
+            <h2>Sentiment Distribution</h2>
+
+            <img
+                src="{{ url_for('static',
+                filename='chart.png') }}"
+                class="chart-image"
+            >
+
+        </div>
+
+        <a href="/">
+            <button>
+                Analyze More Reviews
+            </button>
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

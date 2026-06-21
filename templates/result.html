@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result - SentiScope AI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <h1>Analysis Result</h1>
+
+        <div class="review-box">
+            {{ review }}
+        </div>
+
+        <div class="result">
+
+            <h2>
+                Sentiment:
+
+                {% if sentiment == "Positive" %}
+                    <span class="positive">{{ sentiment }}</span>
+
+                {% else %}
+                    <span class="negative">{{ sentiment }}</span>
+
+                {% endif %}
+            </h2>
+
+            <h3>
+                Confidence:
+                {{ confidence }}%
+            </h3>
+
+        </div>
+
+        <a href="/">
+            <button>
+                Analyze Another Review
+            </button>
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

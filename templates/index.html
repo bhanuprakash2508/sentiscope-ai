@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SentiScope AI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static',
+          filename='css/style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <h1>SentiScope AI</h1>
+
+        <p class="subtitle">
+            AI Powered Customer Feedback Sentiment Analyzer
+        </p>
+
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+
+        <div class="section">
+
+            <h3>Analyze Single Review</h3>
+
+            <form action="/analyze" method="POST">
+
+                <textarea
+                    name="review"
+                    placeholder="Enter customer review here..."
+                    required
+                ></textarea>
+
+                <button type="submit">
+                    Analyze Sentiment
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <div class="section">
+
+            <h3>Upload CSV Reviews</h3>
+
+            <form action="/upload"
+                  method="POST"
+                  enctype="multipart/form-data">
+
+                <input
+                    type="file"
+                    name="csvfile"
+                    required
+                >
+
+                <br><br>
+
+                <button type="submit">
+                    Analyze CSV File
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
