@@ -5,3 +5,4 @@ venv/
 uploads/
 static/chart.png
 .ipynb_checkpoints/
+dataset/aclImdb/
